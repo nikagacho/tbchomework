@@ -48,14 +48,14 @@ func whatToWear(weather: Weather) {
             print("It's cloudy, but it's very hot, we can wear a shirt and jeans")
         }
         else {
-            print ("It's cloudy and it might rain, let's wear a jacket")
+            print("It's cloudy and it might rain, let's wear a jacket")
         }
     case .snowy(var temperature):
         if temperature > 0 {
             print("Snow time, but not too cold, should melt soon, we need to wear warm clothing")
         }
         else {
-            print ("It's FREEZING, please wear a coat, a scarf, waterproof boots, a hat and a pair of gloves")
+            print("It's FREEZING, please wear a coat, a scarf, waterproof boots, a hat and a pair of gloves")
             }
         }
     }
@@ -93,7 +93,7 @@ func bookSorter (array: [Book], year: Int) -> [Book] {
 var newerBooks = bookSorter(array: books, year: 1840)
 
 for book in newerBooks {
-    print (book)
+    print(book)
 }
 
 
@@ -105,8 +105,10 @@ struct BankAccount {
     var balance: Double
     
     mutating func depositAmount(amount: Double) {
-        balance += amount
-        print ((amount), " has been added to your balance.")
+        if balance > 0 {
+            balance += amount
+            print((amount), " has been added to your balance.")
+        }
     }
     mutating func withdrawAmount(amount: Double) {
         if balance - amount > 0 {
@@ -174,5 +176,5 @@ func filterByGenre (playlist: [Song], genre: Genre) -> [Song] {
 var filteredSongs = filterByGenre(playlist: songs, genre: .jazz)
 
 for i in filteredSongs {
-    print (i.description)
+    print(i.description)
 }
