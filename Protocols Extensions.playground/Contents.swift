@@ -112,18 +112,20 @@ class SuperHeroSquad {
 func simulateShowdown(heroes: SuperHeroSquad, enemy: SuperEnemy) {
     print(heroes.nameAllHeroes(), " VS ", enemy.name)
     print(enemy.name, " says: You should not have come here!")
-    for i in heroes.superheroes {
-        var hero = i
-        hero.performSuperPower(enemy: enemy)
-        print(hero.name, "has used a SuperPower! \(enemy.name)  has \(enemy.hitPoints) HP remaining")
-        hero.getInfoOnSuperHero(hero: hero)
-        while hero.superPowers.isEmpty == false  {
+    for var hero in heroes.superheroes {
+        while hero.superPowers.isEmpty == false, enemy.hitPoints > 0  {
             hero.performSuperPower(enemy: enemy)
             print(hero.name, "has used a SuperPower! \(enemy.name) has \(enemy.hitPoints) HP remaining")
         }
         
-        hero.attack(enemy: enemy)
-        print(hero.name, " has Attacked, \(enemy.name) has \(enemy.hitPoints) HP remaining")
+        if enemy.hitPoints > 0 {
+            hero.attack(enemy: enemy)
+            print(hero.name, " has Attacked, \(enemy.name) has \(enemy.hitPoints) HP remaining")
+        }
+        if enemy.hitPoints <= 0 {
+            print("Congratulations Heroes, \(enemy.name) has fallen")
+            break
+        }
     }
     
     switch enemy.hitPoints {
@@ -134,7 +136,7 @@ func simulateShowdown(heroes: SuperHeroSquad, enemy: SuperEnemy) {
     case 1...100:
         print("\(enemy.name) says : This hurt a lot, but I win")
     default:
-        print("Congratulations Heroes, \(enemy.name) has fallen")
+        break
     }
 }
 
