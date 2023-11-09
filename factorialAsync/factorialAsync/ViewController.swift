@@ -9,44 +9,47 @@ import UIKit
 
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Task {
-            await runAsyncFactorialCalculations()
-        }
+        runAsyncFactorialCalculations()
+        
     }
-
+    
     func randomGenerator() -> Int {
         return Int.random(in: 20...50)
     }
-
-    func factorialCounter(number: Double) async -> Double {
-        var ourNumber = number
-        for i in 1...Int(number - 1) {
-            ourNumber *= Double(i)
+    
+    func factorialCounter(number: Double) -> Double {
+        var result = 1.0
+        for i in 1...Int(number) {
+            result *= Double(i)
         }
-        return ourNumber
+        return result
     }
-
-    func runAsyncFactorialCalculations() async {
+    
+    func runAsyncFactorialCalculations() {
         let number1 = randomGenerator()
         let number2 = randomGenerator()
-
-        var winner: Int?
-
-        let result1 = await factorialCounter(number: Double(number1))
-        print("Factorial of  \(number1) is \(result1)")
-        winner = number1
-
-        let result2 = await factorialCounter(number: Double(number2))
-        print("Factorial of  \(number2) is \(result2)")
-
-        if result2 < result1 {
-            winner = number2
+        print("Calculations started")
+        
+        let calculationQueue = DispatchQueue(label: "", attributes: .concurrent)
+        
+        calculationQueue.async {
+            let result1 = self.factorialCounter(number: Double(number1))
+            print("Result One", result1)
         }
-
-        print("Winner is the thread that calculated the factorial of \(winner!).")
+        
+        calculationQueue.async {
+            let result2 = self.factorialCounter(number: Double(number2))
+            print("Result Two", result2)
+        }
+        
+        calculationQueue.async {
+            print("Winner is the result which prints first in the console")
+        }
+        
     }
+    
 }
-
+    
