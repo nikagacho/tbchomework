@@ -13,8 +13,8 @@
 		D54236E52AF5617B005686E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54236E42AF5617B005686E2 /* Assets.xcassets */; };
 		D54236E82AF5617B005686E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54236E62AF5617B005686E2 /* LaunchScreen.storyboard */; };
 		D54236F22AF5701C005686E2 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54236F12AF5701C005686E2 /* CustomCell.swift */; };
-		D54236F42AF57B03005686E2 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54236F32AF57B03005686E2 /* Movies.swift */; };
 		D54236F62AF59201005686E2 /* DetailsVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54236F52AF59201005686E2 /* DetailsVCViewController.swift */; };
+		D5B5640F2AFE985B0030E4AA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B5640E2AFE985B0030E4AA /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,8 @@
 		D54236E72AF5617B005686E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D54236E92AF5617B005686E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D54236F12AF5701C005686E2 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		D54236F32AF57B03005686E2 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		D54236F52AF59201005686E2 /* DetailsVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCViewController.swift; sourceTree = "<group>"; };
+		D5B5640E2AFE985B0030E4AA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +60,41 @@
 		D54236DA2AF5617A005686E2 /* Task18 */ = {
 			isa = PBXGroup;
 			children = (
-				D54236DB2AF5617A005686E2 /* AppDelegate.swift */,
-				D54236DD2AF5617A005686E2 /* SceneDelegate.swift */,
-				D54236DF2AF5617A005686E2 /* ViewController.swift */,
-				D54236F12AF5701C005686E2 /* CustomCell.swift */,
-				D54236F32AF57B03005686E2 /* Movies.swift */,
-				D54236F52AF59201005686E2 /* DetailsVCViewController.swift */,
-				D54236E42AF5617B005686E2 /* Assets.xcassets */,
-				D54236E62AF5617B005686E2 /* LaunchScreen.storyboard */,
 				D54236E92AF5617B005686E2 /* Info.plist */,
+				D5B564122AFEB2870030E4AA /* API */,
+				D5B564102AFEB23C0030E4AA /* ViewControllers */,
+				D5B564112AFEB2560030E4AA /* Support */,
 			);
 			path = Task18;
+			sourceTree = "<group>";
+		};
+		D5B564102AFEB23C0030E4AA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D54236F52AF59201005686E2 /* DetailsVCViewController.swift */,
+				D54236DF2AF5617A005686E2 /* ViewController.swift */,
+				D54236F12AF5701C005686E2 /* CustomCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D5B564112AFEB2560030E4AA /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				D54236E62AF5617B005686E2 /* LaunchScreen.storyboard */,
+				D54236E42AF5617B005686E2 /* Assets.xcassets */,
+				D54236DD2AF5617A005686E2 /* SceneDelegate.swift */,
+				D54236DB2AF5617A005686E2 /* AppDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		D5B564122AFEB2870030E4AA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D5B5640E2AFE985B0030E4AA /* NetworkManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,8 +168,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54236F62AF59201005686E2 /* DetailsVCViewController.swift in Sources */,
-				D54236F42AF57B03005686E2 /* Movies.swift in Sources */,
 				D54236E02AF5617A005686E2 /* ViewController.swift in Sources */,
+				D5B5640F2AFE985B0030E4AA /* NetworkManager.swift in Sources */,
 				D54236DC2AF5617A005686E2 /* AppDelegate.swift in Sources */,
 				D54236F22AF5701C005686E2 /* CustomCell.swift in Sources */,
 				D54236DE2AF5617A005686E2 /* SceneDelegate.swift in Sources */,
