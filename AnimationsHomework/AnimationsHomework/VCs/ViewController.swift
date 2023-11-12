@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         return button
     }()
     
+    
     //MARK: - LifeCycles
     
     override func viewDidLoad() {
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
         setupUI()
         setupConstraints()
         animateFade()
-        button.addTarget(self, action: #selector(pushVC), for: .touchUpInside)
+        setupButton()
     }
     
     //MARK: - Methods
@@ -73,11 +74,19 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc private func pushVC() {
+    private func pushVC() {
         let pushedVC = SecondController()
         navigationController?.pushViewController(pushedVC, animated: true)
     }
     
-    
+    private func setupButton() {
+        let tapAction = UIAction { [weak self] _ in
+            self?.pushVC()
+        }
+        button.addAction(tapAction, for: .touchUpInside)
+    }
 }
+    
+    
+
 
