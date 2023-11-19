@@ -10,9 +10,7 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private var filteredMovies: [newMovie] = []
-    
     private var moviesList: [newMovie] = []
-    
     private var viewModel = ViewModel()
     
     //MARK: UIElements
