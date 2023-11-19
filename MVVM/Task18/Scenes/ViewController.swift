@@ -7,25 +7,13 @@
 
 import UIKit
 
-final class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    private var filteredMovies: [newMovie] = []
     
-    //MARK: Elements
+    private var moviesList: [newMovie] = []
     
-    var movieOne: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0, revenue: 0, poster_path: "")
-    var movieTwo: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0, revenue: 0, poster_path: "")
-    var movieThree: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0, revenue: 0, poster_path: "")
-    var movieFour: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0, revenue: 0, poster_path: "")
-    var movieFive: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0, revenue: 0, poster_path: "")
-    var movieSix: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0,revenue: 0, poster_path: "")
-    var movieSeven: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0, revenue: 0, poster_path: "")
-    var movieEight: newMovie = newMovie(title: "", overview: "", release_date: "", runtime: 0, budget: 0, vote_average: 0, revenue: 0, poster_path: "")
-    
-    var filteredMovies: [newMovie] = []
-    
-    var isSearching: Bool {
-        return !searchBar.text!.isEmpty
-    }
+    private var viewModel = ViewModel()
     
     //MARK: UIElements
     
@@ -44,12 +32,6 @@ final class ViewController: UIViewController, UICollectionViewDelegate, UICollec
         stackView.spacing = 218
         stackView.distribution = .fill
         return stackView
-    }()
-    
-    private let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.isUserInteractionEnabled = true
-        return searchBar
     }()
     
     private let logoView: UIImageView = {
@@ -93,42 +75,9 @@ final class ViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         setupUI()
         setupConstraints()
-        searchBar.delegate = self
-        Task {
-            do {
-                movieOne = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/11836?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                movieTwo = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/7214?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                movieThree = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/613?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                movieFour = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/110555?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                movieFive = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/10634?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                movieSix = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/537996?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                movieSeven = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/951491?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                movieEight = try await getMovie(homeURL: "https://api.themoviedb.org/3/movie/556574?api_key=4e6bf78027a30292fc9a8adf4285533b")
-                
-            } catch MovieError.invalidData {
-                print("ERROR: INVALID DATA")
-            } catch MovieError.invalidURL{
-                print("ERROR: INVALID URL")
-            } catch MovieError.invalidResponse{
-                print("ERROR: INVALID RESPONSE")
-            }
-            
-            moviesList.append(movieOne)
-            moviesList.append(movieTwo)
-            moviesList.append(movieThree)
-            moviesList.append(movieFour)
-            moviesList.append(movieFive)
-            moviesList.append(movieSix)
-            moviesList.append(movieSeven)
-            moviesList.append(movieEight)
-            
-            for i in moviesList {
-                print (i.title, i.runtime, i.release_date)
-            }
-            setupCollectionView()
-            
-        }
-        
+        viewModel.delegate = self
+        viewModel.viewDidLoad()
+        setupCollectionView()
     }
     
     //MARK: Set Up Layout
@@ -146,13 +95,12 @@ final class ViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     private func setupUI() {
-        self.view.frame.size = .init(width: 375, height: 1086)
+        view.frame.size = .init(width: 375, height: 1086)
         view.backgroundColor = UIColor(red: 0.12, green: 0.16, blue: 0.24, alpha: 1.00)
         view.addSubview(mainStackView)
         mainStackView.addArrangedSubview(topStackView)
         topStackView.addArrangedSubview(logoView)
         topStackView.addArrangedSubview(profileButton)
-        mainStackView.addArrangedSubview(searchBar)
         mainStackView.addArrangedSubview(mainLabel)
         mainStackView.addArrangedSubview(collectionView)
     }
@@ -165,11 +113,10 @@ final class ViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return isSearching ? filteredMovies.count : moviesList.count
+        return moviesList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movie = isSearching ? filteredMovies[indexPath.row] : moviesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCell
         cell.nameTitle.text = moviesList[indexPath.row].title
         cell.genreTitle.text = moviesList[indexPath.row].release_date
@@ -187,7 +134,6 @@ final class ViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie = isSearching ? filteredMovies[indexPath.row] : moviesList[indexPath.row]
         let detailsVC = DetailsVCViewController()
         navigationController?.pushViewController(detailsVC, animated: true)
         detailsVC.ratingLabel.text = String(moviesList[indexPath.row].vote_average)
@@ -211,7 +157,16 @@ final class ViewController: UIViewController, UICollectionViewDelegate, UICollec
         filteredMovies = moviesList.filter { $0.title.lowercased().contains(searchText.lowercased()) }
         collectionView.reloadData()
     }
-    
-    
+
 }
 
+extension ViewController: ViewModelDelegate {
+    func didFetchMovies(_ movies: [newMovie]) {
+        self.moviesList = movies
+        collectionView.reloadData()
+    }
+
+    func didFailFetchingMovies(error: Error) {
+        print("Error fetching movies: \(error)")
+    }
+}
