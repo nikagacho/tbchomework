@@ -9,7 +9,7 @@ import Foundation
 
 final class MainScreenViewModel: ObservableObject {
     
-    let networkManager = NetworkManager<Cities>()
+    private let networkManager = NetworkManager<Cities>()
     let travelingTips: [String] = [
         "Pack light and smart: Choose versatile clothing and essentials.",
         "Plan your budget: Set a realistic daily spending limit for a stress-free journey.",
