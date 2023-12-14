@@ -16,6 +16,7 @@
 		D5C409A92B2B1E180017F066 /* MustSeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C409A82B2B1E170017F066 /* MustSeeView.swift */; };
 		D5C409AB2B2B1F2D0017F066 /* TransportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C409AA2B2B1F2D0017F066 /* TransportView.swift */; };
 		D5C409AD2B2B1F630017F066 /* HotelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C409AC2B2B1F630017F066 /* HotelsView.swift */; };
+		D5C409B22B2B99640017F066 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C409B12B2B99640017F066 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		D5C409A82B2B1E170017F066 /* MustSeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustSeeView.swift; sourceTree = "<group>"; };
 		D5C409AA2B2B1F2D0017F066 /* TransportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportView.swift; sourceTree = "<group>"; };
 		D5C409AC2B2B1F630017F066 /* HotelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsView.swift; sourceTree = "<group>"; };
+		D5C409B12B2B99640017F066 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		D5C409952B2B08050017F066 /* TravelApp */ = {
 			isa = PBXGroup;
 			children = (
+				D5C409B12B2B99640017F066 /* NetworkManager.swift */,
 				D5C409962B2B08050017F066 /* TravelAppApp.swift */,
 				D5C409B02B2B35810017F066 /* Models */,
 				D5C409AE2B2B35590017F066 /* Scenes */,
@@ -180,6 +183,7 @@
 				D5C409A92B2B1E180017F066 /* MustSeeView.swift in Sources */,
 				D5C409A72B2B0C630017F066 /* MainScreenViewModel.swift in Sources */,
 				D5C409AD2B2B1F630017F066 /* HotelsView.swift in Sources */,
+				D5C409B22B2B99640017F066 /* NetworkManager.swift in Sources */,
 				D5C409992B2B08050017F066 /* MainScreenView.swift in Sources */,
 				D5C409AB2B2B1F2D0017F066 /* TransportView.swift in Sources */,
 				D5C409972B2B08050017F066 /* TravelAppApp.swift in Sources */,

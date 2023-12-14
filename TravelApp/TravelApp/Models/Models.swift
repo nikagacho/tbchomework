@@ -7,11 +7,16 @@
 
 import Foundation
 
-struct City: Hashable {
-    let name: String
-    let generalInfo: String
-    let imageName: String
-    let transport: [String]
-    let mustSee: [String]
-    let hotels: [String]
+struct City: Codable, Hashable {
+    var name: String
+    var generalInfo: String
+    var imageName: String
+    var transport: [String]
+    var mustSee: [String]
+    var hotels: [String]
 }
+
+struct Cities: Codable, Hashable {
+    var cities: [City]
+}
+

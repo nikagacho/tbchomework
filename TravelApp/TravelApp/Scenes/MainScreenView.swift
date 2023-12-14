@@ -9,9 +9,10 @@ import SwiftUI
 
 struct MainScreenView: View {
     //MARK: - ViewModel
-    var viewModel = MainScreenViewModel()
+    @ObservedObject var viewModel = MainScreenViewModel()
     //MARK: - Alert bool
     @State var isAlertShown = false
+    @State var path: [City] = []
     //MARK: - View
     var body: some View {
         VStack {
@@ -19,8 +20,12 @@ struct MainScreenView: View {
                 .bold()
                 .font(.title)
         }
-        NavigationStack {
-            ForEach(viewModel.cities, id: \.name) { city in
+        .onAppear {
+            viewModel.fetchCities()
+        }
+        
+        NavigationStack(path: $path) {
+            ForEach(viewModel.cities.cities, id: \.name) { city in
                 NavigationLink(value: city) {
                     Text(city.name)
                         .font(.system(size: 40))
@@ -67,6 +72,9 @@ struct MainScreenView: View {
                 }
             }
         }
+        Button("Go back to homepage") {
+            path = []
+        }
         Button("Random Travelling tip") {
             isAlertShown.toggle()
         }
@@ -80,6 +88,7 @@ struct MainScreenView: View {
         })
         
     }
+    
 }
 
 #Preview {
