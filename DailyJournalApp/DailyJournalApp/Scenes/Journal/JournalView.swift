@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct JournalView: View {
-    //MARK: - ViewModel
+    // MARK: - ViewModel
     @ObservedObject var viewModel = JournalViewModel()
-    //MARK: - Body
+    
+    // MARK: - Body
     var body: some View {
         VStack {
             TitleView()

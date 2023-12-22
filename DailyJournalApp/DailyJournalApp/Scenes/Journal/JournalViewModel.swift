@@ -8,19 +8,18 @@
 import Foundation
 
 final class JournalViewModel: ObservableObject {
-    //MARK: - Properties
+    // MARK: - Properties
     @Published var title = ""
     @Published var newsText = ""
     @Published var date: Date = Date()
     @Published var savedNews: [News] = []
     
-    //MARK: - Methods
+    // MARK: - Methods
     func createNews() {
-        if title != "" {
-            let createdNews = News(title: title, newsText: newsText, date: date)
-            savedNews.append(createdNews)
-            resetTextFields()
-        }
+        guard !title.isEmpty else { return }
+        let createdNews = News(title: title, newsText: newsText, date: date)
+        savedNews.append(createdNews)
+        resetTextFields()
     }
     
     func formatDate(date: Date) -> String {

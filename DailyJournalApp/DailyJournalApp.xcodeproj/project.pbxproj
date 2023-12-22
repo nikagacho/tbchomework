@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5C8F4F62B33283C002229E4 /* DailyJournalAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8F4F52B33283C002229E4 /* DailyJournalAppApp.swift */; };
+		D5C8F4F62B33283C002229E4 /* DailyJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8F4F52B33283C002229E4 /* DailyJournalApp.swift */; };
 		D5C8F4F82B33283C002229E4 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C8F4F72B33283C002229E4 /* JournalView.swift */; };
 		D5C8F4FA2B33283D002229E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C8F4F92B33283D002229E4 /* Assets.xcassets */; };
 		D5C8F4FD2B33283D002229E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5C8F4FC2B33283D002229E4 /* Preview Assets.xcassets */; };
@@ -20,7 +20,7 @@
 
 /* Begin PBXFileReference section */
 		D5C8F4F22B33283C002229E4 /* DailyJournalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyJournalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5C8F4F52B33283C002229E4 /* DailyJournalAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyJournalAppApp.swift; sourceTree = "<group>"; };
+		D5C8F4F52B33283C002229E4 /* DailyJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyJournalApp.swift; sourceTree = "<group>"; };
 		D5C8F4F72B33283C002229E4 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		D5C8F4F92B33283D002229E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5C8F4FC2B33283D002229E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		D5C8F50F2B33499B002229E4 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				D5C8F4F52B33283C002229E4 /* DailyJournalAppApp.swift */,
+				D5C8F4F52B33283C002229E4 /* DailyJournalApp.swift */,
 				D5C8F4F92B33283D002229E4 /* Assets.xcassets */,
 			);
 			path = App;
@@ -198,7 +198,7 @@
 				D5C8F5112B337367002229E4 /* TitleView.swift in Sources */,
 				D5C8F5082B334816002229E4 /* FormView.swift in Sources */,
 				D5C8F4F82B33283C002229E4 /* JournalView.swift in Sources */,
-				D5C8F4F62B33283C002229E4 /* DailyJournalAppApp.swift in Sources */,
+				D5C8F4F62B33283C002229E4 /* DailyJournalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
