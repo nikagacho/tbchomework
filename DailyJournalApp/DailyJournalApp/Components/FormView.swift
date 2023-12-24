@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct FormView: View {
-    //MARK: - ViewModel
+    // MARK: - ViewModel
     @ObservedObject var viewModel: JournalViewModel
-    //MARK: - Body
+    
+    // MARK: - Body
     var body: some View {
         Form {
             TextField("Title", text: $viewModel.title)
